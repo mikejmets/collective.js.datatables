@@ -1,6 +1,7 @@
 *.mo
 *.pyo
 *.pyc
+*.swp
 *.egg-info
 .installed.cfg
 .pydevproject

@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:tal="http://xml.zope.org/namespaces/tal" xmlns:metal="http://xml.zope.org/namespaces/metal" xmlns:i18n="http://xml.zope.org/namespaces/i18n" lang="en" metal:use-macro="context/main_template/macros/master" i18n:domain="plone">
+<body>
+    <div metal:fill-slot="main">
+      <tal:main-macro metal:define-macro="main">
+          <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+          <style type="text/css" title="currentStyle">
+              @import "++resource++jquery.datatables/media/css/demo_page.css";
+              @import "++resource++jquery.datatables/media/css/demo_table.css";
+          </style>
+          <script type="text/javascript" charset="utf-8">
+           $(document).ready(function() {
+                  var ajaxUrl = "http://localhost:8080/Plone/example.getdata";
+
+                  /* #TODO This works */
+                  $.ajax({
+                       type: 'GET',
+                       url: ajaxUrl,
+                       data: '',
+                       dataType: 'json',
+                       contentType: 'text/html; charset=utf-8',
+                       success: function(data) {
+                          $('#example-ajax').dataTable(data);
+                       } });
+                  /* #TODO This doesn't work */
+                  $('#example-sAjaxSource').dataTable({
+                      "bProcessing": true,
+                      "bServerSide": true,
+                      "sAjaxSource": ajaxUrl
+                  });
+
+          });
+          </script>
+
+          <h1>Datatables: ajax example</h1>
+          <table cellpadding="0" cellspacing="0" border="0" class="display" id="example-ajax">
+          </table>
+
+          <br />
+          <br />
+          <h1>Datatables: sAjaxSource example</h1>
+          <table cellpadding="0" cellspacing="0" border="0" class="display" id="example-sAjaxSource">
+          </table>
+
+          <h3>The End</h3>
+
+      </tal:main-macro>
+    </div>
+</body>
+</html>

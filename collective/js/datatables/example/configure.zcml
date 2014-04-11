@@ -10,4 +10,19 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="example.ajax.datatables"
+    for="*"
+    template="example_ajax.pt"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="example.getdata"
+    for="*"
+    class="collective.js.datatables.example.view.ExampleTablesView"
+    attribute="getExampleData"
+    permission="zope2.View"
+    />
+
 </configure>

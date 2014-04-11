@@ -16,6 +16,7 @@
       description="jQuery DataTables for Plone 4"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+  <include package=".example"/>
   <include file="upgrades.zcml"/>
 
   <browser:resource
